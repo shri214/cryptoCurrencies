@@ -22,19 +22,19 @@ export default function LabTabs({ searchValue }) {
   const [next, setNext] = useState(10);
 
   let { loading, data, error } = useSelector((state) => state.data);
-  let storedId = useSelector((state) => state.items);
+  // let storedId = useSelector((state) => state.items);
   // console.log(storedId);
   let dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchData());
   }, []);
-  useEffect(() => {
-    if (localStorage.getItem('item')) {
-      console.log('reload');
-      dispatch(itemsAdding(JSON.parse(localStorage.getItem('item'))));
-    }
-  }, [localStorage.getItem('item')]);
+  // useEffect(() => {
+  //   if (localStorage.getItem('item')) {
+  //     console.log('reload');
+  //     dispatch(itemsAdding(JSON.parse(localStorage.getItem('item'))));
+  //   }
+  // }, [localStorage.getItem('item')]);
 
   if (loading) {
     return <Loader />;
@@ -105,20 +105,20 @@ export default function LabTabs({ searchValue }) {
                         .includes(searchValue.toLowerCase())
                     )
                     .map((ele, ind) => {
-                      if (storedId[0].length > 0) {
-                        storedId[0].includes(ele.id)
-                          ? (ele['watch'] = true)
-                          : (ele['watch'] = false);
-                      }
+                      // if (storedId[0].length > 0) {
+                      //   storedId[0].includes(ele.id)
+                      //     ? (ele['watch'] = true)
+                      //     : (ele['watch'] = false);
+                      // }
                       return <Grid ele={ele} ind={ind} />;
                     })
                 : data.slice(prev, next).map((ele, ind) => {
                     // console.log(ele.id, ele.watch, storedId);
-                    if (storedId[0].length > 0) {
-                      storedId[0].includes(ele.id)
-                        ? (ele['watch'] = true)
-                        : (ele['watch'] = false);
-                    }
+                    // if (storedId[0].length > 0) {
+                    //   storedId[0].includes(ele.id)
+                    //     ? (ele['watch'] = true)
+                    //     : (ele['watch'] = false);
+                    // }
                     return <Grid ele={ele} ind={ind} />;
                   })}
             </div>

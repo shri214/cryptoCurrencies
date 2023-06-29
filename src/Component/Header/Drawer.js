@@ -23,7 +23,9 @@ export default function TemporaryDrawer() {
           <NavLink to="/compare" className="item">
             Compare
           </NavLink>
-
+          <NavLink to="/watch" className="item">
+            WatchList
+          </NavLink>
           <button onClick={() => navigation('/dashboard')} className="dash">
             Dashboard
           </button>
